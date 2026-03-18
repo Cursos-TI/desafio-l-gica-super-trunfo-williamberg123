@@ -18,7 +18,8 @@ int main()
 {
   Carta carta1;
   Carta carta2;
-  int numeroDoAtributo;
+  int numeroDoPrimeiroAtributo, numeroDoSegundoAtributo;
+  double somaDaPrimeiraCarta = 0, somaDaSegundaCarta = 0;
 
   printf("Digite o estado da primeira carta: \n");
   scanf("%c", &carta1.estado);
@@ -109,44 +110,116 @@ int main()
   // printf("Super poder: %s\n", carta1.superPower > carta2.superPower ? "Carta 1 venceu" : "Carta 2 venceu");
   // printf("Super poder Carta 1: %f. Carta 2: %f.", carta1.superPower, carta2.superPower);
 
-  printf("\n*** Qual atributo você gostaria de ser usado para comparação? ***\n");
+  printf("\n*** Qual o primeiro atributo que será usado para comparação? ***\n");
   printf("1. População\n");
   printf("2. Área\n");
   printf("3. PIB\n");
   printf("4. Número de pontos turísticos\n");
   printf("5. Densidade demográfica\n");
-  printf("Número do atributo: \n");
-  scanf("%d", &numeroDoAtributo);
+  printf("Número do primeiro atributo: \n");
+  scanf("%d", &numeroDoPrimeiroAtributo);
 
-  switch (numeroDoAtributo)
+  printf("\n*** Qual o segundo atributo que será usado para comparação? ***\n");
+  numeroDoPrimeiroAtributo != 1 && printf("1. População\n");
+  numeroDoPrimeiroAtributo != 2 && printf("2. Área\n");
+  numeroDoPrimeiroAtributo != 3 && printf("3. PIB\n");
+  numeroDoPrimeiroAtributo != 4 && printf("4. Número de pontos turísticos\n");
+  numeroDoPrimeiroAtributo != 5 && printf("5. Densidade demográfica\n");
+  printf("Número do segundo atributo: \n");
+  scanf("%d", &numeroDoSegundoAtributo);
+
+  switch (numeroDoPrimeiroAtributo)
   {
   case 1:
-    printf("Atributo escolhido: População\n");
+    printf("\nPrimeiro atributo escolhido: População\n");
     printf("População: %s\n", carta1.populacao > carta2.populacao ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta = carta1.populacao;
+    somaDaSegundaCarta = carta2.populacao;
     break;
 
   case 2:
-    printf("Atributo escolhido: Área\n");
+    printf("\nPrimeiro atributo escolhido: Área\n");
     printf("Área: %s\n", carta1.area > carta2.area ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta = carta1.area;
+    somaDaSegundaCarta = carta2.area;
     break;
 
   case 3:
-    printf("Atributo escolhido: PIB\n");
+    printf("\nPrimeiro atributo escolhido: PIB\n");
     printf("PIB: %s\n", carta1.pib > carta2.pib ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta = carta1.pib;
+    somaDaSegundaCarta = carta2.pib;
     break;
 
   case 4:
-    printf("Atributo escolhido: Número de pontos turísticos\n");
+    printf("\nPrimeiro atributo escolhido: Número de pontos turísticos\n");
     printf("Pontos turísticos: %s\n", carta1.pturisticos > carta2.pturisticos ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta = carta1.pturisticos;
+    somaDaSegundaCarta = carta2.pturisticos;
     break;
 
   case 5:
-    printf("Atributo escolhido: Densidade demográfica\n");
+    printf("\nPrimeiro atributo escolhido: Densidade demográfica\n");
     printf("Densidade demográfica: %s\n", carta1.densidadepopulacional < carta2.densidadepopulacional ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta = carta1.densidadepopulacional;
+    somaDaSegundaCarta = carta2.densidadepopulacional;
     break;
 
   default:
     break;
+  }
+
+  switch (numeroDoSegundoAtributo)
+  {
+  case 1:
+    printf("\nSegundo atributo escolhido: População\n");
+    printf("População: %s\n", carta1.populacao > carta2.populacao ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta += carta1.populacao;
+    somaDaSegundaCarta += carta2.populacao;
+    break;
+
+  case 2:
+    printf("\nSegundo atributo escolhido: Área\n");
+    printf("Área: %s\n", carta1.area > carta2.area ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta += carta1.area;
+    somaDaSegundaCarta += carta2.area;
+    break;
+
+  case 3:
+    printf("\nSegundo atributo escolhido: PIB\n");
+    printf("PIB: %s\n", carta1.pib > carta2.pib ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta += carta1.pib;
+    somaDaSegundaCarta += carta2.pib;
+    break;
+
+  case 4:
+    printf("\nSegundo atributo escolhido: Número de pontos turísticos\n");
+    printf("Pontos turísticos: %s\n", carta1.pturisticos > carta2.pturisticos ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta += carta1.pturisticos;
+    somaDaSegundaCarta += carta2.pturisticos;
+    break;
+
+  case 5:
+    printf("\nSegundo atributo escolhido: Densidade demográfica\n");
+    printf("Densidade demográfica: %s\n", carta1.densidadepopulacional < carta2.densidadepopulacional ? "Carta 1 venceu" : "Carta 2 venceu");
+    somaDaPrimeiraCarta += carta1.densidadepopulacional;
+    somaDaSegundaCarta += carta2.densidadepopulacional;
+    break;
+
+  default:
+    break;
+  }
+
+  printf("\n*** RODADA ***\n");
+  printf("Soma dos atributos da primeira carta: %f\n", somaDaPrimeiraCarta);
+  printf("Soma dos atributos da segunda carta: %f\n", somaDaSegundaCarta);
+
+  if (somaDaPrimeiraCarta > somaDaSegundaCarta) {
+    printf("\nCarta 1 venceu a rodada!");
+  } else if (somaDaPrimeiraCarta < somaDaSegundaCarta) {
+    printf("\nCarta 2 venceu a rodada!");
+  } else {
+    printf("\nA rodada empatou!");
   }
 
   return 0;
